@@ -1,0 +1,301 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>PicGo图床 | ChenYong's Blog</title><meta name="keywords" content="PicGo,教程,图床,GitHub,七牛云存储,Typora"><meta name="author" content="Chen Yong"><meta name="copyright" content="Chen Yong"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="详解PicGO配合GitHub、七牛云存储、Typora的图床搭建步骤">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PicGo图床">
+<meta property="og:url" content="https://cywarrior666.github.io/cyblog.github.io/2022/04/22/Blog%E6%95%99%E7%A8%8B/2-Picgo%E5%9B%BE%E5%BA%8A/index.html">
+<meta property="og:site_name" content="ChenYong&#39;s Blog">
+<meta property="og:description" content="详解PicGO配合GitHub、七牛云存储、Typora的图床搭建步骤">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://rapxsxmwd.hn-bkt.clouddn.com/MD3.png">
+<meta property="article:published_time" content="2022-04-22T14:48:20.000Z">
+<meta property="article:modified_time" content="2022-04-23T11:56:45.191Z">
+<meta property="article:author" content="Chen Yong">
+<meta property="article:tag" content="PicGo">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="图床">
+<meta property="article:tag" content="GitHub">
+<meta property="article:tag" content="七牛云存储">
+<meta property="article:tag" content="Typora">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://rapxsxmwd.hn-bkt.clouddn.com/MD3.png"><link rel="shortcut icon" href="/cyblog.github.io/img/favicon.png"><link rel="canonical" href="https://cywarrior666.github.io/cyblog.github.io/2022/04/22/Blog%E6%95%99%E7%A8%8B/2-Picgo%E5%9B%BE%E5%BA%8A/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/cyblog.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/cyblog.github.io/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'PicGo图床',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-04-23 19:56:45'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/cyblog.github.io/./img/avatar_girl.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/cyblog.github.io/archives/"><div class="headline">文章</div><div class="length-num">4</div></a></div><div class="data-item"><a href="/cyblog.github.io/tags/"><div class="headline">标签</div><div class="length-num">13</div></a></div><div class="data-item"><a href="/cyblog.github.io/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/cyblog.github.io/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/cyblog.github.io/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/cyblog.github.io/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/cyblog.github.io/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/cyblog.github.io/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div></div></div></div><div class="post" id="body-wrap"><!-- - var top_img = page.top_img || page.cover || page.randomcover--><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/cyblog.github.io/">ChenYong's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/cyblog.github.io/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/cyblog.github.io/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/cyblog.github.io/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/cyblog.github.io/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/cyblog.github.io/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">PicGo图床</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-22T14:48:20.000Z" title="发表于 2022-04-22 22:48:20">2022-04-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-04-23T11:56:45.191Z" title="更新于 2022-04-23 19:56:45">2022-04-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/cyblog.github.io/categories/Blog/">Blog</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="PicGo图床"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="Picgo图床"><a href="#Picgo图床" class="headerlink" title="Picgo图床"></a>Picgo图床</h1><h3 id="一、Picgo介绍："><a href="#一、Picgo介绍：" class="headerlink" title="一、Picgo介绍："></a>一、Picgo介绍：</h3><p>PicGo 是一款开源免费的图片上传兼任相册管理软件，支持将图片上传到微博，七牛，腾讯云，又拍云，GitHub，SM.MS 这几大常见的存储平台或图床服务空间中。软件底层基于 electron-vue 开发，对于 macOS 系统版本的更迭没有原生开发软件那样特别敏感，兼容性很好。</p>
+<p>PicGo 图床原理：PicGo其实只是一个上传工具，可以绑定到各大图床服务平台（类似网盘，但是网盘不支持直接外链访问）。用PicGo上传图片到绑定的图床后会返回一个图床提供的外链url，可直接访问该url，直接显示出上传到图床里的图片。</p>
+<h3 id="二、图床介绍"><a href="#二、图床介绍" class="headerlink" title="二、图床介绍"></a>二、图床介绍</h3><p>图床就是专门用来存放图片，同时允许你把图片对外连接的网上空间，不少图床都是免费的图床一般是指储存图片的服务器。图床有国内和国外之分，国外的图床由于有空间距离等因素决定访问速度很慢影响图片显示速度。国内也分为单线空间、多线空间和cdn加速三种，访问速度比国外要快很多。</p>
+<p>结合上述俩点可以看出，我们blog要使用图床目的就是：因为我们blog是部署在github上的，在国内访问时候加载较大图片时候会非常慢。通过用图床服务平台返回的url来配置blog里需要用到的图片路径，可大幅度加快blog的访问速度。</p>
+<h3 id="三、Picgo-Github"><a href="#三、Picgo-Github" class="headerlink" title="三、Picgo+Github"></a>三、Picgo+Github</h3><p>1、在github上新建仓储（PicgoImages）专门用来存储图片。</p>
+<p>2、获取github token: 在”Settings”里找到”&lt;&gt; Developer settings“，选择”Personal access tokens“，点击”Generate new token“，输入密码后会获取到token（这token只会出现这一次，后面再打开就不会再显示出来，所以一定要先复制出来以备后面要用！一定要先复制出来以备后面要用！一定要先复制出来以备后面要用！）</p>
+<p>3、打开Picgo，选择”图床设置“里”Github图床“。具体设置如下</p>
+<table>
+<thead>
+<tr>
+<th align="center">设定仓库名（就是github上面的仓储路径）</th>
+<th>CYwarrior666&#x2F;PicgoImages</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">设定分支名（仓储的分支）</td>
+<td>main</td>
+</tr>
+<tr>
+<td align="center">设定Token（上面获取到的Github Token）</td>
+<td>daiusdu2e02912u9e128ey9w8dw89e21</td>
+</tr>
+<tr>
+<td align="center">指定存储路径（图片存储到仓储分支里picgo_路径下）</td>
+<td>picgo_</td>
+</tr>
+<tr>
+<td align="center">设定自定义域名（CDN：”<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/%E2%80%9C+%E4%B8%8A%E9%9D%A2%E7%9A%84%E2%80%9D%E4%BB%93%E5%82%A8%E8%B7%AF%E5%BE%84%E2%80%9C%EF%BC%8C%E7%BB%84%E5%90%88%E6%88%90%E5%90%ABCDN%E5%8A%A0%E9%80%9F%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%EF%BC%89">https://cdn.jsdelivr.net/gh/“+上面的”仓储路径“，组合成含CDN加速的自定义域名）</a></td>
+<td><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/CYwarrior666/PicgoImages">https://cdn.jsdelivr.net/gh/CYwarrior666/PicgoImages</a></td>
+</tr>
+</tbody></table>
+<p>4、点击“确定“保存，点击”设为默认图床“默认上传到该图床。</p>
+<p>5、进入”上传区“，上传图片文件，上传完成后会自动在剪贴板里添加图库返回的url地址。</p>
+<p>6、这时候到github上面就会看到”CYwarrior666&#x2F;PicgoImages“下会有”picgo_“开头的图片文件，代表Picgo+Github图床设置成功。</p>
+<h3 id="四、Picgo-七牛云对象存储Kodo"><a href="#四、Picgo-七牛云对象存储Kodo" class="headerlink" title="四、Picgo+七牛云对象存储Kodo"></a>四、Picgo+七牛云对象存储Kodo</h3><p>1、“<a target="_blank" rel="noopener" href="https://portal.qiniu.com/home%E2%80%9D%E6%B3%A8%E5%86%8C%E4%B8%83%E7%89%9B%E4%BA%91%E8%B4%A6%E5%8F%B7%EF%BC%8C%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%EF%BC%8C%E8%BF%9B%E5%85%A5%E6%8E%A7%E5%88%B6%E5%8F%B0%EF%BC%8C%E8%BF%9B%E5%85%A5%E2%80%9C%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8Kodo%E2%80%9D%E3%80%82">https://portal.qiniu.com/home”注册七牛云账号，实名认证，进入控制台，进入“对象存储Kodo”。</a></p>
+<p>2、进入“空间管理“，点击”新建空间“，输入存储空间名称（如”pico-cyimage“），选择存储区域（华南”z2”），访问控制选择”公开“。</p>
+<p>3、创建完成后，点击存储空间后面的“概览”按钮，找到CDN测试域名复制出来以备后面要用。</p>
+<p>（七牛融合 CDN 测试域名（以 clouddn.com&#x2F;qiniucdn.com&#x2F;qnssl.com&#x2F;qbox.me 结尾），每个域名每日限回源总流量 10GB，每个测试域名自创建起30个自然日后系统会自动回收，仅供测试使用并且不支持 Https 访问）</p>
+<p>4、返回“空间管理”模块，点击存储空间后面的”设置”按钮，找到“Referer 防盗链”，点击“设置”，</p>
+<p>当前状态：开启，黑白名单配置：白名单，Referer：刚才复制的七牛融合 CDN 测试域名，允许空 Referer：开启。</p>
+<p>5、点击右上角头像，进入密钥管理，将“AK”和“SK”都复制出来以备后面要用。</p>
+<p>6、打开Picgo，选择”图床设置“里”七牛图床“。具体设置如下：</p>
+<table>
+<thead>
+<tr>
+<th>设定AccessKey</th>
+<th>上面复制出来的“AK”</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>设定SeretKey</td>
+<td>上面复制出来德“SK”</td>
+</tr>
+<tr>
+<td>设定存储空间名</td>
+<td>上面的存储空间名称（如”pico-cyimage“）</td>
+</tr>
+<tr>
+<td>设定访问网址</td>
+<td>上面的“七牛融合 CDN 测试域名”</td>
+</tr>
+<tr>
+<td>确认存储区域（各地区不一样，华南是“z2”,其他地区参考官方文档）</td>
+<td>z2</td>
+</tr>
+<tr>
+<td>设定网址后缀</td>
+<td></td>
+</tr>
+<tr>
+<td>指定存储路径</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>4、点击“确定“保存，点击”设为默认图床“默认上传到该图床。</p>
+<p>5、进入”上传区“，上传图片文件，上传完成后会自动在剪贴板里添加图库返回的url地址。</p>
+<p>6、这时候到七牛云对象存储Kodo上”pico-cyimage“点击“文件”按钮就能看到上传的图片，代表Picgo+七牛云对象存储Kodo图床设置成功。</p>
+<h3 id="五、Picgo-Typora-图床"><a href="#五、Picgo-Typora-图床" class="headerlink" title="五、Picgo+Typora+图床"></a>五、Picgo+Typora+图床</h3><p>1、打开Typora，点击“文件”，进入“偏好设置”，选择“图像”</p>
+<p>2、上传服务设定：</p>
+<p>上传服务：选择”PigGo(app)“，Picgo路径：输入picgo的安装路径（如：D:\Picgo\PicGo.exe）</p>
+<p>3、点击”验证图片上传选项“验证Picgo+Typora+图床设置是否成功</p>
+<p>4、使用Picgo+Typora+图床：在Typora内选中图片，右键，选择”上传图片“即可。（注意图片上方的路径变化，会从本地根路径，变成图床的url路径）</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/cyblog.github.io/tags/PicGo/">PicGo</a><a class="post-meta__tags" href="/cyblog.github.io/tags/%E6%95%99%E7%A8%8B/">教程</a><a class="post-meta__tags" href="/cyblog.github.io/tags/%E5%9B%BE%E5%BA%8A/">图床</a><a class="post-meta__tags" href="/cyblog.github.io/tags/GitHub/">GitHub</a><a class="post-meta__tags" href="/cyblog.github.io/tags/%E4%B8%83%E7%89%9B%E4%BA%91%E5%AD%98%E5%82%A8/">七牛云存储</a><a class="post-meta__tags" href="/cyblog.github.io/tags/Typora/">Typora</a></div><div class="post_share"><div class="social-share" data-image="http://rapxsxmwd.hn-bkt.clouddn.com/MD3.png" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/cyblog.github.io/2022/04/21/Blog%E6%95%99%E7%A8%8B/1-Hexo%E5%AE%89%E8%A3%85/"><img class="prev-cover" src="http://rapxsxmwd.hn-bkt.clouddn.com/MD2.png" onerror="onerror=null;src='/cyblog.github.io/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Hexo安装</div></div></a></div><div class="next-post pull-right"><a href="/cyblog.github.io/2022/04/23/Blog%E6%95%99%E7%A8%8B/3-%E4%B8%BB%E9%A2%98%E5%AE%89%E8%A3%85&amp;%E7%BE%8E%E5%8C%96/"><img class="next-cover" src="http://rapxsxmwd.hn-bkt.clouddn.com/MD4.png" onerror="onerror=null;src='/cyblog.github.io/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Butterfly主题安装&amp;美化</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/cyblog.github.io/2022/04/21/Blog%E6%95%99%E7%A8%8B/1-Hexo%E5%AE%89%E8%A3%85/" title="Hexo安装"><img class="cover" src="http://rapxsxmwd.hn-bkt.clouddn.com/MD2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-21</div><div class="title">Hexo安装</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/cyblog.github.io/./img/avatar_girl.jpg" onerror="this.onerror=null;this.src='/cyblog.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Chen Yong</div><div class="author-info__description">我就是我，不一样的烟火</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/cyblog.github.io/archives/"><div class="headline">文章</div><div class="length-num">4</div></a></div><div class="card-info-data-item"><a href="/cyblog.github.io/tags/"><div class="headline">标签</div><div class="length-num">13</div></a></div><div class="card-info-data-item"><a href="/cyblog.github.io/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/CYwarrior666"><i class="fab fa-github"></i><span>关注我的GitHub</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/CYwarrior666" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://weibo.com/" target="_blank" title="微博"><i class="fa-brands fa-weibo"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Picgo%E5%9B%BE%E5%BA%8A"><span class="toc-number">1.</span> <span class="toc-text">Picgo图床</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81Picgo%E4%BB%8B%E7%BB%8D%EF%BC%9A"><span class="toc-number">1.0.1.</span> <span class="toc-text">一、Picgo介绍：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9B%BE%E5%BA%8A%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.0.2.</span> <span class="toc-text">二、图床介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81Picgo-Github"><span class="toc-number">1.0.3.</span> <span class="toc-text">三、Picgo+Github</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Picgo-%E4%B8%83%E7%89%9B%E4%BA%91%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8Kodo"><span class="toc-number">1.0.4.</span> <span class="toc-text">四、Picgo+七牛云对象存储Kodo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81Picgo-Typora-%E5%9B%BE%E5%BA%8A"><span class="toc-number">1.0.5.</span> <span class="toc-text">五、Picgo+Typora+图床</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/cyblog.github.io/2022/04/23/Blog%E6%95%99%E7%A8%8B/3-%E4%B8%BB%E9%A2%98%E5%AE%89%E8%A3%85&amp;%E7%BE%8E%E5%8C%96/" title="Butterfly主题安装&amp;美化"><img src="http://rapxsxmwd.hn-bkt.clouddn.com/MD4.png" onerror="this.onerror=null;this.src='/cyblog.github.io/img/404.jpg'" alt="Butterfly主题安装&amp;美化"/></a><div class="content"><a class="title" href="/cyblog.github.io/2022/04/23/Blog%E6%95%99%E7%A8%8B/3-%E4%B8%BB%E9%A2%98%E5%AE%89%E8%A3%85&amp;%E7%BE%8E%E5%8C%96/" title="Butterfly主题安装&amp;美化">Butterfly主题安装&amp;美化</a><time datetime="2022-04-23T14:48:20.000Z" title="发表于 2022-04-23 22:48:20">2022-04-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/cyblog.github.io/2022/04/22/Blog%E6%95%99%E7%A8%8B/2-Picgo%E5%9B%BE%E5%BA%8A/" title="PicGo图床"><img src="http://rapxsxmwd.hn-bkt.clouddn.com/MD3.png" onerror="this.onerror=null;this.src='/cyblog.github.io/img/404.jpg'" alt="PicGo图床"/></a><div class="content"><a class="title" href="/cyblog.github.io/2022/04/22/Blog%E6%95%99%E7%A8%8B/2-Picgo%E5%9B%BE%E5%BA%8A/" title="PicGo图床">PicGo图床</a><time datetime="2022-04-22T14:48:20.000Z" title="发表于 2022-04-22 22:48:20">2022-04-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/cyblog.github.io/2022/04/21/Blog%E6%95%99%E7%A8%8B/1-Hexo%E5%AE%89%E8%A3%85/" title="Hexo安装"><img src="http://rapxsxmwd.hn-bkt.clouddn.com/MD2.png" onerror="this.onerror=null;this.src='/cyblog.github.io/img/404.jpg'" alt="Hexo安装"/></a><div class="content"><a class="title" href="/cyblog.github.io/2022/04/21/Blog%E6%95%99%E7%A8%8B/1-Hexo%E5%AE%89%E8%A3%85/" title="Hexo安装">Hexo安装</a><time datetime="2022-04-21T14:48:20.000Z" title="发表于 2022-04-21 22:48:20">2022-04-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/cyblog.github.io/2022/04/20/%E5%85%B3%E4%BA%8E%E6%88%91/" title="关于我和我的Blog"><img src="http://rapxsxmwd.hn-bkt.clouddn.com/MD1.png" onerror="this.onerror=null;this.src='/cyblog.github.io/img/404.jpg'" alt="关于我和我的Blog"/></a><div class="content"><a class="title" href="/cyblog.github.io/2022/04/20/%E5%85%B3%E4%BA%8E%E6%88%91/" title="关于我和我的Blog">关于我和我的Blog</a><time datetime="2022-04-20T14:48:20.000Z" title="发表于 2022-04-20 22:48:20">2022-04-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By Chen Yong</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎来到我的Blog,一起畅游知识海洋吧！😘</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/cyblog.github.io/js/utils.js"></script><script src="/cyblog.github.io/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="/cyblog.github.io/js/search/local-search.js"></script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

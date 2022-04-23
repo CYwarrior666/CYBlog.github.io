@@ -1,0 +1,11 @@
+// 修改主页卡片模块透明度
+.recent-post-item
+  background: rgb(255,255,255,0.5)!important
+.post_cover
+  filter: opacity(0.85)
+.card_widgt
+  background: rgb(255,255,255,0.5)!important
+.avatar-img
+  filter: opacity(0.5)
+.thumbnail
+  filter: opacity(0.5)
